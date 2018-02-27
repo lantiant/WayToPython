@@ -4,7 +4,7 @@ import string
 import random
 import sys
 
-'''用于生成具有一定强度的密码，建议最小长度为8位,最大长度不超过40位。'''
+#生成具有一定强度的密码，建议最小长度为8位,最大长度不超过40位,超过会触发bug。
 
 p1 = list(string.ascii_lowercase)
 p2 = list(string.digits)

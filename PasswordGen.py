@@ -40,11 +40,3 @@ for i in getnewlist():
 random.shuffle(pwlist)
 
 print(''.join(pwlist))
-    
-
-
-
-
-
-    
-    

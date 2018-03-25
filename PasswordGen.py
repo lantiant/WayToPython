@@ -16,10 +16,11 @@ random.shuffle(p2)
 random.shuffle(p3)
 random.shuffle(p4)
 
-def looppw(length,amount):
-    '''生成具有一定强度的密码，使用方法：PasswordGen.py 【密码长度】【密码个数】。
+def looppw(length,amount,filename=None):
+    '''生成具有一定强度的密码，使用方法：passwdgen.py 【密码长度】【密码个数】[保存密码的文件名】。
       不指定长度和个数时生成一个8位长的密码。
-      不指定个数时默认生成一个。'''
+      不指定个数时默认生成一个。
+      不指定文件名时默认不保存生成的字符串至文件中。'''
     def getnewlist():
         oldlist = [p1, p2, p3, p4]
         lenlist = len(oldlist)
@@ -44,11 +45,20 @@ def looppw(length,amount):
         random.shuffle(pwfinal)
         return ''.join(pwfinal)
 
-
-    for j in range(amount):
-        print getpw()
+    if filename is None:
+        for j in range(amount):
+            print getpw()
+    else:
+        output = sys.stdout
+        outputfile = open(filename, 'w')
+        sys.stdout = outputfile
+        for j in range(amount):
+            print getpw()
+        outputfile.close()
+        sys.stdout = output
 
 if __name__ == "__main__":
+    usage = 'Usage: python '+sys.argv[0]+' [length] [amount] [filename],length and amount are an integer.'
     if len(sys.argv) == 1:
         length = 8
         amount = 1
@@ -56,7 +66,7 @@ if __name__ == "__main__":
         try:
             length = int(sys.argv[1])
         except ValueError:
-            print 'Usage: python sys.argv[0] [length] [amount],length and amount are an integer.'
+            print usage
             exit(-1)
         else:
             amount = 1
@@ -64,15 +74,34 @@ if __name__ == "__main__":
         try:
             length = int(sys.argv[1])
         except ValueError:
-            print 'Usage: python sys.argv[0] [length] [amount],length and amount are an integer.'
-            exit(-2)
+            print usage
+            exit(-1)
         else:
             try:
                 amount = int(sys.argv[2])
             except ValueError:
-                print 'Usage: python sys.argv[0] [length] [amount],length and amount are an integer.'
-                exit(-3)
-    elif len(sys.argv) > 3:
-        print 'Usage: python sys.argv[0] [length] [amount],length and amount are an integer.'
-        exit(-4)
-    looppw(length, amount)
+                print usage
+                exit(-2)
+    elif len(sys.argv)  == 4:
+        try:
+            length = int(sys.argv[1])
+        except ValueError:
+            print usage
+            exit(-1)
+        else:
+            try:
+                amount = int(sys.argv[2])
+            except ValueError:
+                print usage
+                exit(-2)
+            else:
+                filename = sys.argv[3]
+    elif len(sys.argv) > 4:
+        print usage
+        exit(-3)
+    looppw(length, amount,filename)
+
+
+
+
+

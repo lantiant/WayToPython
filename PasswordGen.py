@@ -17,7 +17,7 @@ random.shuffle(p3)
 random.shuffle(p4)
 
 def looppw(length,amount):
-    '''生成具有一定强度的密码，使用方法：passwdgen.py 【密码长度】【密码个数】。
+    '''生成具有一定强度的密码，使用方法：PasswordGen.py 【密码长度】【密码个数】。
       不指定长度和个数时生成一个8位长的密码。
       不指定个数时默认生成一个。'''
     def getnewlist():

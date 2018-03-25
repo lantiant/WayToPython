@@ -20,7 +20,7 @@ def looppw(length,amount,filename=None):
     '''生成具有一定强度的密码，使用方法：passwdgen.py 【密码长度】【密码个数】[保存密码的文件名】。
       不指定长度和个数时生成一个8位长的密码。
       不指定个数时默认生成一个。
-      不指定文件名时默认不保存生成的字符串至文件中。'''
+      不指定文件名时默认不保存生成的字符串至文件中,指定文件名后会将密码保存至文件中并打印出来。'''
     def getnewlist():
         oldlist = [p1, p2, p3, p4]
         lenlist = len(oldlist)
@@ -56,6 +56,10 @@ def looppw(length,amount,filename=None):
             print getpw()
         outputfile.close()
         sys.stdout = output
+        f = open(filename,'r')
+        content = f.read()
+        print content
+        f.close()
 
 if __name__ == "__main__":
     usage = 'Usage: python '+sys.argv[0]+' [length] [amount] [filename],length and amount are an integer.'

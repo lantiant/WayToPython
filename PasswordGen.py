@@ -66,6 +66,7 @@ if __name__ == "__main__":
     if len(sys.argv) == 1:
         length = 8
         amount = 1
+        filename = None
     elif len(sys.argv)  == 2:
         try:
             length = int(sys.argv[1])
@@ -86,6 +87,8 @@ if __name__ == "__main__":
             except ValueError:
                 print usage
                 exit(-2)
+            else:
+                filename = None
     elif len(sys.argv)  == 4:
         try:
             length = int(sys.argv[1])

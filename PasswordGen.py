@@ -3,7 +3,6 @@
 import string
 import random
 import sys
-from random import choice
 
 
 p1 = list(string.ascii_lowercase)
@@ -37,11 +36,7 @@ def looppw(length,amount,filename=None):
                 return newlist + oldlist[0:rem]
 
     def getpw():
-        pwlist = getnewlist()
-        pwfinal = []
-        for i in pwlist:
-            pw = choice(i)
-            pwfinal.append(pw)
+        pwfinal = [random.choice(i) for i in getnewlist()]
         random.shuffle(pwfinal)
         return ''.join(pwfinal)
 
@@ -75,6 +70,7 @@ if __name__ == "__main__":
             exit(-1)
         else:
             amount = 1
+            filename = None
     elif len(sys.argv)  == 3:
         try:
             length = int(sys.argv[1])

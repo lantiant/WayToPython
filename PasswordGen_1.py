@@ -16,10 +16,19 @@ random.shuffle(p3)
 random.shuffle(p4)
 
 def looppw(length,amount,filename=None):
-    '''生成具有一定强度的字符串，使用方法：passwdgen.py 【字符串长度】【字符串个数】【保存字符串的文件名】。
+    """
+
+    :param length: integer, length of password
+    :param amount: integer, amount of password
+    :param filename: string, filename of password
+    :return:
+    """
+    '''
+    生成具有一定强度的字符串，使用方法：var = passwdgen.py 【字符串长度】【字符串个数】【保存字符串的文件名】。
       不指定长度和个数时生成一个8位长的字符串。
       不指定个数时默认生成一个。
-      不指定文件名时默认不保存生成的字符串至文件中,指定文件名后会将字符串保存至文件中并打印出来。'''
+      不指定文件名时默认不保存生成的字符串至文件中,指定文件名后会将字符串保存至文件中并打印出来。
+    '''
     def getnewlist():
         oldlist = [p1, p2, p3, p4]
         lenlist = len(oldlist)
